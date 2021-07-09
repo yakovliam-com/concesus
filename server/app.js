@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config();
 const KubeClientManager = require('./KubeClientManager');
+const ProxyManager = require('./ProxyManager');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -28,6 +29,12 @@ try {
     console.error(e);
 }
 
+// load proxies
+const proxyManager = new ProxyManager(kubeClientManager);
+proxyManager.startProxies();
+
+// load hubs
+
 console.log("Started server")
 
-module.exports = app;
+module.exports = {app, kubeClientManager};
