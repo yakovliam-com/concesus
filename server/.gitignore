@@ -54,6 +54,9 @@ crashlytics-build.properties
 logs
 *.log
 
+# Lock
+yarn.lock
+
 # Runtime data
 pids
 *.pid
