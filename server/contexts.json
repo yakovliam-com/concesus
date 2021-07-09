@@ -1,0 +1,13 @@
+{
+  "proxy": {
+    "name": "proxy",
+    "cluster": {
+      "name": "proxy",
+      "server": "playempire.net"
+    },
+    "user": {
+      "username": "username1",
+      "password": "password1"
+    }
+  }
+}
