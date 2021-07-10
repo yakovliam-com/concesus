@@ -1,10 +1,10 @@
 {
+  "cluster": {
+    "name": "hub",
+    "server": "playempire.net"
+  },
   "proxy": {
     "name": "proxy",
-    "cluster": {
-      "name": "proxy",
-      "server": "playempire.net"
-    },
     "user": {
       "username": "username1",
       "password": "password1"
@@ -12,10 +12,6 @@
   },
   "hub": {
     "name": "hub",
-    "cluster": {
-      "name": "hub",
-      "server": "playempire.net"
-    },
     "user": {
       "username": "username1",
       "password": "password1"

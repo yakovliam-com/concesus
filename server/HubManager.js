@@ -4,8 +4,7 @@ function hubManager(clientManager) {
     let _hubs = []
 
     this.start = () => {
-        console.log(_clientManager.getHubClient());
-        // somehow load proxies (objects from kubernetes) into array
+        // somehow load hubs (objects from kubernetes) into array
     }
 
 }
