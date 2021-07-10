@@ -8,8 +8,12 @@ function clientManager() {
     let _proxyContext;
     let _proxyClient;
 
+    let _hubContext;
+    let _hubClient;
+
     this.loadClients = () => {
         this.loadProxyClient();
+        this.loadHubClient();
     }
 
     this.loadProxyClient = () => {
@@ -28,6 +32,21 @@ function clientManager() {
         _proxyClient = client.makeApiClient(k8s.CoreV1Api);
     }
 
+    this.loadHubClient = () => {
+        this.loadHubContext();
+
+        // create client
+        let client = new k8s.KubeConfig();
+
+        client.loadFromOptions({
+            clusters: [_hubContext.cluster],
+            users: [_hubContext.user],
+            contexts: [_hubContext],
+            currentContext: _hubContext.name,
+        });
+
+        _hubClient = client.makeApiClient(k8s.CoreV1Api);
+    }
 
     this.loadProxyContext = () => {
         let data = fs.readFileSync('contexts.json');
@@ -36,12 +55,19 @@ function clientManager() {
         _proxyContext = parsed.proxy;
     }
 
-    this.getProxyContext = () => {
-        return _proxyContext;
+    this.loadHubContext = () => {
+        let data = fs.readFileSync('contexts.json');
+        let parsed = JSON.parse(data);
+
+        _hubContext = parsed.hub;
     }
 
     this.getProxyClient = () => {
         return _proxyClient;
+    }
+
+    this.getHubClient = () => {
+        return _hubClient;
     }
 }
 

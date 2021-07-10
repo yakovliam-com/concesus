@@ -5,6 +5,7 @@ var logger = require('morgan');
 require('dotenv').config();
 const KubeClientManager = require('./KubeClientManager');
 const ProxyManager = require('./ProxyManager');
+const HubManager = require('./HubManager');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,9 +32,11 @@ try {
 
 // load proxies
 const proxyManager = new ProxyManager(kubeClientManager);
-proxyManager.startProxies();
+proxyManager.start();
 
 // load hubs
+const hubManager = new HubManager(kubeClientManager);
+hubManager.start();
 
 console.log("Started server")
 
