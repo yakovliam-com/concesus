@@ -8,6 +8,11 @@ function clientManager() {
     let _client;
     let _contexts;
 
+    this.loadContexts = () => {
+        let raw = fs.readFileSync('contexts.json');
+        _contexts = JSON.parse(raw);
+    }
+
     this.loadClients = () => {
         // create client
         let client = new k8s.KubeConfig();

@@ -1,7 +1,7 @@
 {
   "cluster": {
-    "name": "hub",
-    "server": "playempire.net"
+    "name": "minikube",
+    "server": "localhost"
   },
   "proxy": {
     "name": "proxy",

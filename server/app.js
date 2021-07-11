@@ -25,6 +25,7 @@ app.use('/users', usersRouter);
 const kubeClientManager = new KubeClientManager();
 
 try {
+    kubeClientManager.loadContexts();
     kubeClientManager.loadClients();
 } catch (e) {
     console.error(e);
